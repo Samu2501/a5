@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.*;
 
 /**
  * Ein Taschenrechner
@@ -7,21 +8,19 @@ import java.util.Scanner;
  */
 public class Rechner
 {
-
     /*
      * Die main-Methode. Gibt "Hallo Welt!" aus.
      */
     public static void main(String[] args)
     {
         // Einrichtung
-        double a, b, result = 0;
+        BiFunction<Double, Double, Double> add = (a, b) -> a + b;
+        BiFunction<Double, Double, Double> sub = (a, b) -> a - b;
+        BiFunction<Double, Double, Double> mult = (a, b) -> a * b;
+        BiFunction<Double, Double, Double> divi = (a, b) -> a / b;
+        double a, b = 0;
         String op;
         JConsole console = new JConsole();
-        
-        Operator add = (x, y) -> x + y;
-        Operator sub = (x, y) -> x - y;
-        Operator mult = (x, y) -> x * y;
-        Operator divd = (x, y) -> x / y;
         
         while (true) {
             // Eingabe
@@ -34,18 +33,14 @@ public class Rechner
             
             // Verarbeitung
             if (op.equals("+")) {
-                result = add.calculate(a, b);
+                console.println("Ergebnis: " + add.apply(a, b));
             } else if (op.equals("-")) {
-                result = sub.calculate(a, b);
+                console.println("Ergebnis: " + sub.apply(a, b));
             } else if (op.equals("*")) {
-                result = mult.calculate(a, b);
+                console.println("Ergebnis: " + mult.apply(a, b));
             } else if (op.equals("/")) {
-                result = divd.calculate(a, b);
+                console.println("Ergebnis: " + divi.apply(a, b));
             }
-            
-            // Ausgabe
-            console.println("Ergebnis: " + result);
         }
     }
-
 }
