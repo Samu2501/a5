@@ -20,11 +20,13 @@ public class Rechner
         
         Operator add = (x, y) -> x + y;
         Operator sub = (x, y) -> x - y;
+        Operator mult = (x, y) -> x * y;
+        Operator divd = (x, y) -> x / y;
         
         while (true) {
             // Eingabe
             do {
-                op = console.readString("Welche Operation soll durchgeführt werden (+,-)?: ");
+                op = console.readString("Welche Operation soll durchgeführt werden (+,-,*,/)?: ");
             } while(!op.equals("+") && !op.equals("-"));
             
             a = console.readInt("Erste Ganzzahl: ");
@@ -35,6 +37,10 @@ public class Rechner
                 result = add.calculate(a, b);
             } else if (op.equals("-")) {
                 result = sub.calculate(a, b);
+            } else if (op.equals("*")) {
+                result = mult.calculate(a, b);
+            } else if (op.equals("/")) {
+                result = divd.calculate(a, b);
             }
             
             // Ausgabe
