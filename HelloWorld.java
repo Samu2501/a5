@@ -3,6 +3,7 @@ public class HelloWorld
 {
     public static void main ()
     {
-        System.out.println("Hello WOOOOORLD");
+        System.out.println("Software Engineering");
+        System.out.println("Labor");
     }
 }
